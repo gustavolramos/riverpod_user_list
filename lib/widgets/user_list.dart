@@ -9,19 +9,28 @@ class UserList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final AsyncValue<List<User>> userListProvider = ref.watch(userProvider); 
+    final AsyncValue<List<User>> pageUserListProvider = ref.watch(userListProvider);
 
-    return userListProvider.when(
+    return pageUserListProvider.when(
       data: (userList) {
-        return ListView.builder(
-          itemCount: userList.length,
-          itemBuilder: (context, index) {
-            final User user = userList[index];
-            return CustomListTile(
-              title: user.name,
-              subtitle: user.nationality,
-            );
-          },
+        return Scaffold(
+          appBar: AppBar(
+            leading: const Icon(Icons.list),
+            title: const Text('Riverpod User List'),
+            centerTitle: true,
+            backgroundColor: Colors.black38,
+          ),
+          body: ListView.builder(
+            itemCount: userList.length,
+            itemBuilder: (context, index) {
+              final User user = userList[index];
+              return CustomListTile(
+                title: user.name,
+                subtitle: user.nationality,
+                userID: user.id,
+              );
+            },
+          ),
         );
       },
       loading: () => const CircularProgressIndicator(),
