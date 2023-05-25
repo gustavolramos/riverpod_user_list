@@ -6,6 +6,7 @@ This Flutter project utilizes Riverpod to display a list of users from a mocked 
 
 - AsyncValue, Providers, etc with the "flutter_riverpod" package
 - Futures, API Requests, JSON parsing, etc with the "http" package
+- Routing with the "go_router" package
 - An example API from MockAPI (https://mockapi.io/) to help create the user list with the desired properties.
 
 ## For context

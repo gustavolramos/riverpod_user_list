@@ -25,7 +25,7 @@ class CustomListTile extends ConsumerWidget {
           trailing: Text(userID),
           subtitle: Text(subtitle),
           hoverColor: Colors.black12,
-          onTap: () => context.go('/userlist/$userID'),
+          onTap: () => context.go('userlist/$userID'),
         ),
       ),
     );
