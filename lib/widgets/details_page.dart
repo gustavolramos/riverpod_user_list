@@ -11,7 +11,8 @@ class DetailsPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final AsyncValue<List<User>> pageUserListProvider = ref.watch(userListProvider);
+    final AsyncValue<List<User>> pageUserListProvider =
+        ref.watch(userListProvider);
     User? getUserById(String? userId) {
       return pageUserListProvider.when(
         data: (userList) {
@@ -28,33 +29,27 @@ class DetailsPage extends ConsumerWidget {
       return const Text('User not found');
     }
 
-    return ListView(
-      children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 100.0),
+        child: ListView(
           children: [
             const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [Icon(Icons.person, size: 50.0)]),
-            const SizedBox(height: 20),
-            Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [Text(user.name)]),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+                children: [Icon(Icons.person, size: 100.0)]),
+            Column(
               children: [
-                const SizedBox(width: 10),
-                Text(user.age.toString()),
+                Text(user.name),
                 Text(user.nationality),
               ],
             ),
+            const SizedBox(height: 50),
             IconButton(
                 onPressed: () => context.go('/userlist'),
                 icon: const Icon(Icons.arrow_back)),
           ],
         ),
-      ],
+      ),
     );
   }
 }

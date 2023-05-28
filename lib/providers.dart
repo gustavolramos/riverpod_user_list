@@ -28,7 +28,7 @@ final routeProvider = Provider<GoRouter>((ref) => GoRouter(
           },
           routes: [
             GoRoute(
-                path: 'userlist/:userId',
+                path: ':userId',
                 pageBuilder: (context, state) {
                   final userId = state.pathParameters['userId'];
                   return MaterialPage(child: DetailsPage(userId: userId));
