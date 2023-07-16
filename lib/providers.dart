@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_user_list/widgets/error_page.dart';
-import 'package:riverpod_user_list/widgets/user_list.dart';
-import 'package:riverpod_user_list/widgets/details_page.dart';
+import 'package:riverpod_user_list/view/error_page.dart';
+import 'package:riverpod_user_list/view/user_list.dart';
+import 'package:riverpod_user_list/view/details_page.dart';
 import 'package:riverpod_user_list/services/user_services.dart';
 import 'package:go_router/go_router.dart';
-import 'package:riverpod_user_list/widgets/home_page.dart';
+import 'package:riverpod_user_list/view/home_page.dart';
 import 'models/user_model.dart';
 
 final servicesProvider = Provider<UserServices>((ref) => UserServices());

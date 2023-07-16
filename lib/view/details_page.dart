@@ -11,23 +11,13 @@ class DetailsPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final AsyncValue<List<User>> pageUserListProvider =
-        ref.watch(userListProvider);
-    User? getUserById(String? userId) {
-      return pageUserListProvider.when(
-        data: (userList) {
-          return userList.firstWhere((user) => user.id == userId);
-        },
-        loading: () => null,
-        error: (error, stackTrace) => null,
-      );
-    }
+    final AsyncValue<List<User>> pageUserListProvider = ref.watch(userListProvider);
 
-    final User? user = getUserById(userId);
-
-    if (user == null) {
-      return const Text('User not found');
-    }
+    final User? user = pageUserListProvider.when(
+      data: (userList) => userList.firstWhere((user) => user.id == userId),
+      loading: () => null,
+      error: (error, stackTrace) => null,
+    );
 
     return Scaffold(
       body: Padding(
@@ -39,7 +29,7 @@ class DetailsPage extends ConsumerWidget {
                 children: [Icon(Icons.person, size: 100.0)]),
             Column(
               children: [
-                Text(user.name),
+                Text(user!.name),
                 Text(user.nationality),
               ],
             ),
